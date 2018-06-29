@@ -1,0 +1,28 @@
+.dashboard
+  %h1 Guild Guide Dashboard
+  .journey
+    .btn
+      = link_to 'Trigger Queued Messages', messages_send_path
+    
+
+  .journey
+    %h2 Sentiments by SMSJourney
+    %p= Journey.all.map{|j| "#{j.id}: #{j.name}" }.join("<br>").html_safe
+    = pie_chart Sentiment.all.group(:journey_id).count
+
+
+  - @journeys.each do |journey|
+    .journey
+      %h2= journey.name
+      %p= journey.description
+      
+      %hr
+      %i Sentiments
+      = line_chart journey.sentiments.group(:quantitative).count
+
+
+      %hr
+      %i Responses
+      = line_chart journey.sentiments.group_by_month(:created_at).count
+
+

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -33,5 +33,8 @@ end
 
 gem 'faker'
 gem 'rolify', '~> 5.1.0'
-gem "administrate"
+gem 'administrate'
 gem 'twilio-ruby'
+gem 'haml-rails'
+gem 'groupdate'
+gem 'chartkick'

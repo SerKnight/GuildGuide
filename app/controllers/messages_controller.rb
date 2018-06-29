@@ -35,4 +35,11 @@ class MessagesController < ApplicationController
     )
   end
 
+
+  def trigger
+    ProcessMessagesJob.new.perform
+
+    flash[:success] = "Sent Queued SMS messages"
+    redirect_to root_url
+  end
 end
