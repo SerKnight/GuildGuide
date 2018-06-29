@@ -8,7 +8,7 @@ class ProcessMessagesJob < ApplicationJob
     
     messages.each do |message|
 
-      if message.user.opted_out == false
+      if message.receiver.opted_out == false
 
         client.messages.create(
           body: message.body,

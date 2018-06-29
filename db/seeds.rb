@@ -38,7 +38,7 @@ end
     first_name: f_name,
     last_name: l_name,
     phone: phone,
-    opted_out: [true, false].sample
+    opted_out: false
   )
 
   # puts "Created User: #{user.id}"

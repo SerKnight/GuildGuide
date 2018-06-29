@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   
   def receive
     user = User.find_by_phone(params['From'])
-    journey_id =  user.journeys.empty? ? nil : user.journeys.first.id
+    journey_id =  user.journeys.empty? ? Journey.first.id : user.journeys.first.id # how to deal with random text entries
 
     message = ReceivedMessage.create!(
       body: params["Body"],
@@ -17,10 +17,10 @@ class MessagesController < ApplicationController
     client.messages.create({
           from: ENV['GUILD_PHONE'],
           to: params['From'],
-          thanks_body: "#{thanks_sentence}. Your education advisor will be in touch."
+          body: "#{thanks_sentence}. Your education advisor will be in touch."
         })
 
-    log_sentiment(message.id, journey_id, params)
+    log_sentiment(message.id, journey_id, user.id, params)
   end
 
   def log_sentiment(message_id, journey_id, user_id, params)
@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
     quantitative = body.scan(/\d+/).first
     Sentiment.create!(
       journey_id: journey_id,
-      message_id: message.id,
+      message_id: message_id,
       user_id: user_id,
       quantitative: quantitative,
       qualatative: body
