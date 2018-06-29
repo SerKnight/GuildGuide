@@ -28,7 +28,7 @@ MessageTemplate.create!(journey: j2, title: 'Message 3', body: "Hola there. This
   )
 end
 
-100.times do |i|
+1.times do |i|
   f_name = Faker::Name.first_name
   l_name = Faker::Name.last_name
   phone = '+13036188520'
@@ -54,22 +54,23 @@ end
       sender_id: admin.id,
       receiver_id: user.id,
       from: admin.phone,
-      sent: true,
+      sent: false,
       to: user.phone,
-      type: 'SentMessage'
+      type: 'SentMessage',
+      send_at: DateTime.now
     )
     puts "Created Message: #{m.id}"
 
-    s = Sentiment.create!(
-      quantitative: [1,1,1,1,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,5,5,5,5,5,5,5,5].sample.to_f,
-      qualatative: Faker::TheFreshPrinceOfBelAir.quote,
-      user_id: user.id,
-      message_id: m.id, 
-      journey_id: journey.id,
-      created_at: DateTime.now - rand(12).months
-    )
+    # s = Sentiment.create!(
+    #   quantitative: [1,1,1,1,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,5,5,5,5,5,5,5,5].sample.to_f,
+    #   qualatative: Faker::TheFreshPrinceOfBelAir.quote,
+    #   user_id: user.id,
+    #   message_id: m.id, 
+    #   journey_id: journey.id,
+    #   created_at: DateTime.now - rand(12).months
+    # )
 
-    puts "Created Sentiment: #{s.id}"
-    puts "--------------------------"
+    # puts "Created Sentiment: #{s.id}"
+    # puts "--------------------------"
   end
 end

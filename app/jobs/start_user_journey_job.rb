@@ -13,7 +13,7 @@ class StartUserJourneyJob < ApplicationJob
         body: template.body,
         sender_id: admin.id,
         receiver_id: user.id,
-        send_at: DateTime.now + "#{ i + 1 }".to_i.minutes, # this should be months or something
+        send_at: DateTime.now, # + "#{ i + 1 }".to_i.minutes, # this should be months or something
         sent: false,
         from: admin.phone,
         to: user.phone

@@ -37,9 +37,11 @@ class MessagesController < ApplicationController
 
 
   def trigger
+    messages_count = Message.where(sent: false).where('send_at < ?', DateTime.now).count
+
     ProcessMessagesJob.new.perform
 
-    flash[:success] = "Sent Queued SMS messages"
+    flash[:success] = "Sent #{messages_count} Queued SMS messages"
     redirect_to root_url
   end
 end
