@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantitative: 1.5
+  qualatative: MyText
+  user: one
+  message: one
+  journey: one
+
+two:
+  quantitative: 1.5
+  qualatative: MyText
+  user: two
+  message: two
+  journey: two

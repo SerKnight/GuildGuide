@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  guild_id: MyString
+  first_name: MyString
+  last_name: MyString
+  phone: MyString
+  opted_out: false
+
+two:
+  guild_id: MyString
+  first_name: MyString
+  last_name: MyString
+  phone: MyString
+  opted_out: false
