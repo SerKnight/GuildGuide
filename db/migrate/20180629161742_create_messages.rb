@@ -5,6 +5,9 @@ class CreateMessages < ActiveRecord::Migration[5.1]
       t.integer :sender_id, foreign_key: true
       t.integer :receiver_id, foreign_key: true
 
+      t.datetime :send_at
+      t.boolean :sent
+
       t.string :from
       t.string :to
       t.string :type

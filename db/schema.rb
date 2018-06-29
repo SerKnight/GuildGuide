@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20180629163642) do
     t.text "body"
     t.integer "sender_id"
     t.integer "receiver_id"
+    t.datetime "send_at"
+    t.boolean "sent"
     t.string "from"
     t.string "to"
     t.string "type"

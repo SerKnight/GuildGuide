@@ -34,3 +34,4 @@ end
 gem 'faker'
 gem 'rolify', '~> 5.1.0'
 gem "administrate"
+gem 'twilio-ruby'
